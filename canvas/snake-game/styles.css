@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#canvas-elm {
+    /* width: 800px;
+    height: 800px; */
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
