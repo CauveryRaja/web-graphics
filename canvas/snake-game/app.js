@@ -20,6 +20,10 @@ document.body.addEventListener('keydown', function(event) {
 })
 
 function computeInitialPosition() {
+    snakeObj['head'] = {
+        x: canvasWidth/2 - 50,
+        y: canvasHeight/2
+    };
     snakeObj['tail'] = {
         x: canvasWidth/2 - 50,
         y: canvasHeight/2
@@ -32,56 +36,64 @@ function swapWidthHeight() {
     height = temp;
 }
 
+let count = 0;
 function drawSnake() {
     cxt.fillStyle = 'red';
     switch(snakeObj['direction']) {
         case 'right': 
-            snakeObj['tail']['x'] += 5;
+            snakeObj['head']['x'] += 5;
             break;
         case 'up': 
-            snakeObj['tail']['y'] -= 5;
-            swapWidthHeight();
+            snakeObj['head']['y'] -= 5;
+            // swapWidthHeight();
             break;
         case 'left': 
-            snakeObj['tail']['x'] -= 5;
+            snakeObj['head']['x'] -= 5;
             break;
         case 'down': 
-            snakeObj['tail']['y'] += 5;
-            swapWidthHeight();
+            snakeObj['head']['y'] += 5;
+            // swapWidthHeight();
             break;
     }
-    computeHeadPosition();
-    cxt.fillRect(snakeObj['tail'].x, snakeObj['tail'].y, 
+    // computeHeadPosition();
+    if(count>=5) {
+        cxt.clearRect(snakeObj['tail'].x, snakeObj['tail'].y, 
+        width, height); 
+        snakeObj['tail'].x += 5;
+        snakeObj['tail'].y += 5;
+    }
+    cxt.fillRect(snakeObj['head'].x, snakeObj['head'].y, 
                     width, height);
+    count++;
 }
 
-function computeHeadPosition() {
-    snakeObj['head'] = {
-        x: canvasWidth/2 + width,
-        y: canvasHeight/2
-    }
-    switch(snakeObj['direction']) {
-        case 'right': 
-            snakeObj['head']['y'] += width;
-            break;
-        case 'up': 
-            snakeObj['head']['x'] -= width;
-            break;
-        case 'left': 
-            snakeObj['head']['y'] -= width;
-            break;
-        case 'down': 
-            snakeObj['head']['x'] += width;
-            break;
-    }
-}
+// function computeHeadPosition() {
+//     snakeObj['head'] = {
+//         x: canvasWidth/2 + width,
+//         y: canvasHeight/2
+//     }
+//     switch(snakeObj['direction']) {
+//         case 'right': 
+//             snakeObj['head']['y'] += width;
+//             break;
+//         case 'up': 
+//             snakeObj['head']['x'] -= width;
+//             break;
+//         case 'left': 
+//             snakeObj['head']['y'] -= width;
+//             break;
+//         case 'down': 
+//             snakeObj['head']['x'] += width;
+//             break;
+//     }
+// }
 
 function init() {
     canvas = document.getElementById('canvas-elm');
     cxt = canvas.getContext('2d');
     canvasWidth = canvas.offsetWidth;
     canvasHeight = canvas.offsetHeight;
-    width = 100;
+    width = 10;
     height = 10;
     snakeObj = {
         head: {
