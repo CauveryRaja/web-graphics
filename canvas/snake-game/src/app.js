@@ -1,10 +1,5 @@
-const greeting = 'Hello World';
-console.log(greeting);
+import Canvas from './canvas/Canvas';
 
-const getData = async (url) => {
-  const response = await fetch(url);
-  const result = await response.json();
-  console.log(result);
-};
+const canvasElm = document.getElementById('canvas');
 
-getData('https://jsonplaceholder.typicode.com/posts');
+const canvas = new Canvas();
