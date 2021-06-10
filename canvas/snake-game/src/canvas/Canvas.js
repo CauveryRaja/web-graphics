@@ -5,11 +5,12 @@ class Canvas {
     }
 
     paint(callback) {
+        this.cxt.fillColor = 'red';
         callback(this.cxt);
     }
 
     animate(callback) {
-        setInterval(callback.bind(this.cxt), 5);
+        setInterval(() => callback(this.cxt), 1000);
     }
 }
 

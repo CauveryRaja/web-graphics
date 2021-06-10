@@ -1,22 +1,26 @@
 class Snake {
     constructor(x, y) {
-        super();
         this.head = {};
         this.tail = {x, y};
         this.direction = 'right';
     }
 
     draw(cxt) {
-        cxt.fillRect(this.tail.x, this.tail.y, 300, 10);
+        cxt.fillRect(this.tail.x, this.tail.y, 200, 10);
+        this.head = {
+            x: this.tail.x,
+            y: this.tail.y + 200
+        }
     }
 
     move(cxt) {
         cxt.fillRect(this.head.x, this.head.y, 10, 10);
         cxt.clearRect(this.tail.x, this.tail.y, 10, 10);
-        updateHeadTail();
+        this.updateHeadTail();
     }
 
     updateHeadTail() {
+        console.log('Updating head, tail ...', this);
         // this.head.x += 10; 
         this.head.y += 10; // For direction right
 
@@ -24,3 +28,5 @@ class Snake {
         this.tail.y += 10; // For direction right
     }
 }
+
+export default Snake;
