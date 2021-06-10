@@ -8,8 +8,8 @@ class Snake {
     draw(cxt) {
         cxt.fillRect(this.tail.x, this.tail.y, 200, 10);
         this.head = {
-            x: this.tail.x,
-            y: this.tail.y + 200
+            x: this.tail.x + 200,
+            y: this.tail.y
         }
     }
 
@@ -22,10 +22,10 @@ class Snake {
     updateHeadTail() {
         console.log('Updating head, tail ...', this);
         // this.head.x += 10; 
-        this.head.y += 10; // For direction right
+        this.head.x += 10; // For direction right
 
         // this.tail.x += 10;
-        this.tail.y += 10; // For direction right
+        this.tail.x += 10; // For direction right
     }
 }
 

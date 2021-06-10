@@ -10,7 +10,7 @@ class Canvas {
     }
 
     animate(callback) {
-        setInterval(() => callback(this.cxt), 1000);
+        setInterval(() => callback(this.cxt), 100);
     }
 }
 
