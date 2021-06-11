@@ -13,6 +13,19 @@ class Snake {
         }
     }
 
+    drawSnake(cxt, x, y) {
+        this.position = [{x,y}]; // head position
+        cxt.fillRect(x, y, 10, 10);
+        for(let i=1; i<=5; i++) {
+            let pos = {
+                x: this.position[i-1].x - 10, // right moving snake. so, pos - head
+                y: y
+            };
+            this.position.push(pos);
+            cxt.fillRect(pos.x, pos.y, 10, 10);
+        }
+    }
+
     move(cxt) {
         cxt.fillRect(this.head.x, this.head.y, 10, 10);
         cxt.clearRect(this.tail.x, this.tail.y, 10, 10);
