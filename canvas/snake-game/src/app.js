@@ -13,17 +13,6 @@ canvas.paint(snake.draw.bind(snake));
 canvas.animate(snake.move.bind(snake));
 
 document.body.addEventListener('keydown', function(event) {
-    // Works for 'keydown', 'keypress' does not detect arrow keys
-    // switch(event.key) {
-    //     case 'ArrowRight': snakeObj['direction'] = 'right';
-    //                         break;
-    //     case 'ArrowUp': snakeObj['direction'] = 'up';
-    //                         break;
-    //     case 'ArrowLeft': snakeObj['direction'] = 'left';
-    //                         break;
-    //     case 'ArrowDown': snakeObj['direction'] = 'down';
-    //                         break;
-    // }
     let direction = event.key.split('Arrow')[1];
     snake.changeDirection(direction.toLowerCase());
 })
