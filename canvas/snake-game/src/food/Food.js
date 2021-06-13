@@ -7,22 +7,18 @@ class Food {
     }
 
     draw(cxt) {
-        cxt.fillColor = 'red';
+        cxt.fillStyle= 'red';
         cxt.clearRect(this.position.x, this.position.y, 10, 10);
         this.position = {
-            x: Math.ceil(Math.random() * 800),
-            y: Math.ceil(Math.random() * 600)
+            x: Math.ceil(Math.random() * 790),
+            y: Math.ceil(Math.random() * 590)
         };
         cxt.fillRect(this.position.x, this.position.y, 10, 10);
+        cxt.fillStyle = 'black';
     }
 
     isEaten({x, y}) {
-        console.log('x,y', x, y);
-        console.log('condition 1', x, this.position.x, y+10, this.position.y);
-        console.log('condition 2', y, this.position.y, x+10, this.position.x);
-        if(x === this.position.x && (y+10 > this.position.y && y+10 < this.position.y+10))
-            return true;
-        else if(y === this.position.y && (x+10 > this.position.x && x+10 < this.position.x+10))
+        if((x+10 > this.position.x && x+10 < this.position.x+10) && (y+10 > this.position.y && y+10 < this.position.y+10))
             return true;
         else
             return false;
