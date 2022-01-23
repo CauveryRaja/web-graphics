@@ -16,10 +16,22 @@ class Snake {
 
     render(startX, startY) {
         this.construct(startX, startY);
-        console.log(this.positions);
         this.positions.forEach(({x, y}) => {
             this.cxt.fillRect(x, y, 10, 10);
         });
+    }
+
+    move() {
+        let head, tail;
+        head = {
+            x: this.positions[0].x + 10,
+            y: this.positions[0].y
+        };
+        this.positions.unshift(head);
+        tail = this.positions.pop();
+
+        this.cxt.fillRect(head.x, head.y, 10, 10);
+        this.cxt.clearRect(tail.x, tail.y, 10, 10);
     }
 }
 
