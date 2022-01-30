@@ -7,13 +7,39 @@
     <title>Clipping</title>
 </head>
 <body>
-    <svg width="500" height="500">
+    <!-- Clipping -->
+    <!-- <svg width="500" height="500">
         <circle cx="100" cy="100" r="100" clip-path="url(#cut-off)" />
-
         <defs>
             <clipPath id="cut-off">
+                <style>
+                    rect {
+                        fill: red;
+                    }
+                </style>
                 <rect x="20" y="20" width="200" height="100" />
             </clipPath>
+        </defs>
+    </svg> -->
+
+    <!-- Masking -->
+    <svg width="500" height="500">
+        <style>
+            circle {
+                fill: red;
+            }
+        </style>
+        <circle cx="100" cy="100" r="100" mask="url(#myMask)" />
+
+        <defs>
+            <mask id="myMask">
+                <style>
+                    rect {
+                        fill: red;
+                    }
+                </style>
+                <rect x="20" y="20" width="200" height="100" />
+            </mask>
         </defs>
     </svg>
 </body>
