@@ -1,6 +1,6 @@
 {
-  "name": "snake-game-v2",
-  "version": "2.0.0",
+  "name": "snake-game-v3",
+  "version": "3.0.0",
   "description": "Snake game using HTML Canvas",
   "main": "app.js",
   "scripts": {

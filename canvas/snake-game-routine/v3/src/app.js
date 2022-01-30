@@ -6,6 +6,16 @@ const canvasHeight = canvas.height;
 const cxt = canvas.getContext("2d");
 
 let snake = new Snake(cxt);
-snake.render(canvasWidth/2, canvasHeight/2);
+snake.render(canvasWidth / 2, canvasHeight / 2);
 
 setInterval(() => snake.move(), 100);
+
+document.addEventListener('keydown', ({ key }) => {
+	const direction = key.split('Arrow')[1].toLowerCase();
+	if(((direction === 'up' || direction === 'down')
+		&& (snake.direction === 'left' || snake.direction === 'right')) ||
+		(direction === 'left' || direction === 'right')
+		&& (snake.direction === 'up' || snake.direction === 'down')) {
+			snake.direction = direction;
+		}
+});
